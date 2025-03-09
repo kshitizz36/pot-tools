@@ -14,8 +14,7 @@ client = instructor.from_groq(Groq(api_key=os.getenv("GROQ_API_KEY")), mode=inst
 
 class CodeChange(BaseModel):
     path: str
-    old_content: str  # Changed from code_content
-    new_content: str  # New field
+    code_content: str
     reason: str
     
 def get_all_files_recursively(root_directory):
