@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+groq
+modal
+python-dotenv
+instructor
