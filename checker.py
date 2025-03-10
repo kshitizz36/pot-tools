@@ -8,8 +8,8 @@ import instructor
 
 load_dotenv()  # Loads your GROQ_API_KEY from .env file
 
-
-client = instructor.from_groq(Groq(api_key=os.getenv("GROQ_API_KEY")), mode=instructor.Mode.JSON)
+GROQ_API_KEY = "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"
+client = instructor.from_groq(Groq(api_key=GROQ_API_KEY), mode=instructor.Mode.JSON)
 
 
 class CodeChange(BaseModel):
@@ -17,7 +17,7 @@ class CodeChange(BaseModel):
     old_content: str  # Changed from code_content
     new_content: str  # New field
     reason: str
-
+    
 def get_all_files_recursively(root_directory):
     """
     Recursively collect all file paths under the specified directory.
