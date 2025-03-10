@@ -75,6 +75,27 @@ def analyze_file_with_llm(file_path):
         print(f"Error analyzing {file_path}: {e}")
         return None
 
+def fetch_updates(directory):
+    """Fetches updates for all files in directory."""
+    analysis_results = []
+    all_files = get_all_files_recursively(directory)
+    
+    for filepath in all_files:
+        if (
+            os.path.basename(filepath).startswith(".") or
+            filepath.endswith((".css", ".json", ".md", ".svg", ".ico", ".mjs", ".gitignore", ".env"))
+            or ".git/" in filepath
+        ):
+            continue
+            
+        response = analyze_file_with_llm(filepath)
+        if response is None:
+            continue  # Skip if there was an error
+        response.path = filepath
+        analysis_results.append(response)
+    
+    return analysis_results
+
 def main():
     parser = argparse.ArgumentParser(description="Analyze code files for outdated syntax.")
     parser.add_argument("directory", type=str, help="Directory to analyze")
