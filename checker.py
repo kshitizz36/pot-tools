@@ -9,7 +9,7 @@ import instructor
 load_dotenv()  # Loads your GROQ_API_KEY from .env file
 
 GROQ_API_KEY = "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"
-client = instructor.from_groq(Groq(api_key=os.getenv("GROQ_API_KEY")), mode=instructor.Mode.JSON)
+client = instructor.from_groq(Groq(api_key=GROQ_API_KEY), mode=instructor.Mode.JSON)
 
 
 class CodeChange(BaseModel):
