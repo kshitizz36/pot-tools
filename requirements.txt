@@ -4,3 +4,5 @@ groq
 modal
 python-dotenv
 instructor
+google-generativeai
+pydantic
